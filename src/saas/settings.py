@@ -26,8 +26,14 @@ SECRET_KEY = 'django-insecure-$rcg8na+a&d1cz$zkx*iyc)34d8h@see=s$5dzhur61-a_tx+$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    ".railway.app",
+]
+if DEBUG:
+    ALLOWED_HOSTS +=[
+        "127.0.0.1",
+        "localhost"
+    ]
 
 # Application definition
 
@@ -38,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main.apps.MainConfig',
     'visits.apps.VisitsConfig',
 ]
 
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'saas.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "main/templates"],
+        'DIRS': [BASE_DIR / "saas/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

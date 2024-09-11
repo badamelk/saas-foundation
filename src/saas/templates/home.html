@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1> Welcome {{username}}</h1>
+
+{% include 'snippets/user_message.html' %}
+
+<h1> Total number of visits on the website {{pageVisits}}</h1>
+<h1> Number of visits on {{currentPage}} {{siteVisits}}</h1>
+
+{% endblock content %}
