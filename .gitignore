@@ -1,4 +1,4 @@
-.saas_env
+
 saas_foundation.code-workspace
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -124,6 +124,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+.saas_env
 .env
 .venv
 env/
