@@ -23,7 +23,7 @@ class Command(BaseCommand):
                 completed_urls.append(url)
             else:
                 self.stdout.write(
-                    self.style.ERROR(f'Failed to downlod {url}')
+                    self.style.ERROR(f'Failed to download {url}')
                 )
         if set(completed_urls) == set(EXTERNAL_STATICFILES.values()):
             self.stdout.write(
