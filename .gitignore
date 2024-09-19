@@ -1,4 +1,11 @@
+# ignore vendor static files
+src\staticfiles\vendors
 
+#ignore local static files root
+# or local-cdn
+local-cdn
+
+#ignore VScode config
 saas_foundation.code-workspace
 # Byte-compiled / optimized / DLL files
 __pycache__/
