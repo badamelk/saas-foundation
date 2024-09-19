@@ -52,8 +52,8 @@ ENV DJANGO_DEBUG=${DJANGO_DEBUG}
 # database isn't available during build
 # run any other commands that do not need the database
 # such as:
-RUN python code/manage.py downloadstatic
-RUN python code/manage.py collectstatic --noinput
+RUN python manage.py downloadstatic
+RUN python manage.py collectstatic --noinput
 
 # set the Django default project name
 ARG PROJ_NAME="saas"
