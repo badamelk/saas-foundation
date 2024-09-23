@@ -17,6 +17,19 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST=config("EMAIL_HOST", cast=str, default='smtp.gmail.com')
+EMAIL_PORT=config("EMAIL_PORT", cast=str, default='587')  #Recommended
+EMAIL_USE_TLS=config("EMAIL_USE_TLS", cast=bool, default=True)
+EMAIL_USE_SSL=config("EMAIL_USE_SSL", cast=bool, default=False)
+EMAIL_HOST_USER=config("EMAIL_HOST_USER", cast=str, default=None)
+EMAIL_HOST_PASSWORD=config("EMAIL_HOST_PASSWORD", cast=str, default=None)
+
+ADMINS=[('kibam', 'kibam.b@yahoo.com')]
+MANAGERS=ADMINS
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -44,8 +57,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # my apps
     'visits.apps.VisitsConfig',
-    'static_files.apps.StaticFilesConfig'
+    'static_files.apps.StaticFilesConfig',
+    # allauth_ui apps
+    'allauth_ui',
+    # allauth apps
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.google',
+    'widget_tweaks',
+    'slippers',
+
 ]
 
 MIDDLEWARE = [
@@ -56,8 +81,15 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+
+}
 
 ROOT_URLCONF = 'saas.urls'
 
@@ -121,6 +153,24 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# allAuth configuration
+LOGIN_REDIRECT_URL="/"
+ACCOUNT_AUTHENTICATION_METHOD="username_email"
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+ACCOUNT_EMAIL_SUBJECT_PREFIX="[saas]"
+ACCOUNT_EMAIL_NOTIFICATIONS=True
+ACCOUNT_EMAIL_REQUIRED=True
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ALLAUTH_UI_THEME = "cmyk"
 
 
 # Internationalization

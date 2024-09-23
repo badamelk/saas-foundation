@@ -3,11 +3,11 @@ from  visits.models import PageVisit
 
 # Create your views here.
 
-def default_view(request):
-    return homepage(request)
-
 def homepage(request):
-    currentPage = homepage.__name__
+    return default_view(request)
+
+def default_view(request):
+    currentPage = "homepage"
     PageVisit.objects.create(path=request.path)
     qs_page = PageVisit.objects.filter(path=request.path)
     qs_all = PageVisit.objects.all()
