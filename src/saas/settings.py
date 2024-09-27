@@ -70,7 +70,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'widget_tweaks',
     'slippers',
-
 ]
 
 MIDDLEWARE = [
@@ -86,10 +85,6 @@ MIDDLEWARE = [
     
 ]
 
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-
-}
 
 ROOT_URLCONF = 'saas.urls'
 
@@ -171,6 +166,20 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ALLAUTH_UI_THEME = "cmyk"
+
+SOCIALACCOUNT_EMAIL_AUTHENTICATION = True
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+      'EMAIL_AUTHENTICATION': True
+  },
+    'google': {
+      'EMAIL_AUTHENTICATION': True
+  },
+    
+}
+
 
 
 # Internationalization
