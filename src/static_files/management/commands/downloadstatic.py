@@ -18,7 +18,7 @@ class Command(BaseCommand):
         completed_urls = []
         for name, url in EXTERNAL_STATICFILES.items():
             out_path = STATICFILES_VENDOR_DIR / name
-            dl_success = helpers.downlaod_to_local(url, out_path)
+            dl_success = helpers.download_to_local(url, out_path)
             if dl_success:
                 completed_urls.append(url)
             else:
