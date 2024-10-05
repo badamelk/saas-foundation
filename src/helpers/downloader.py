@@ -1,7 +1,7 @@
 import requests
 from pathlib import Path
 
-def downlaod_to_local(url:str, out_path:Path, parent_mkdir:bool=True):
+def download_to_local(url:str, out_path:Path, parent_mkdir:bool=True):
     if not isinstance(out_path, Path):
         raise ValueError(f"{out_path} must be a valid pathlib.Path object")
     if parent_mkdir:

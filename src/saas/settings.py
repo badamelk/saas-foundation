@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     # my apps
     'visits.apps.VisitsConfig',
     'static_files.apps.StaticFilesConfig',
+    'profiles',
+    'subscriptions',
     # allauth_ui apps
     'allauth_ui',
     # allauth apps
