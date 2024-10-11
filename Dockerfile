@@ -63,6 +63,12 @@ ARG EMAIL_HOST_PASSWORD
 ENV EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
 ARG STRIPE_SECRET_KEY
 ENV STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+ARG SUPER_USERNAME
+ENV SUPER_USERNAME=${SUPER_USERNAME}
+ARG SUPER_EMAIL
+ENV SUPER_EMAIL=${SUPER_EMAIL}
+ARG SUPER_PASSWORD
+ENV SUPER_PASSWORD=${SUPER_PASSWORD}
 
 # database isn't available during build
 # run any other commands that do not need the database
@@ -79,8 +85,8 @@ ARG PROJ_NAME="saas"
 RUN printf "#!/bin/bash\n" > ./paracord_runner.sh && \
     printf "RUN_PORT=\"\${PORT:-8000}\"\n\n" >> ./paracord_runner.sh && \
     printf "python manage.py migrate --no-input\n" >> ./paracord_runner.sh && \
-    printf "python3 manage.py createsuperuser --noinput --username ${SUPER_USERNAME} --email ${SUPER_EMAIL}; \n" >> ./paracord_runner.sh && \
-    printf "python3 changesuperuserpw.py -n ${SUPER_USERNAME} -p ${SUPER_PASSWORD}; \n " >> ./paracord_runner.sh && \
+    printf "python3 manage.py createsuperuser --noinput --username SUPER_USERNAME --email SUPER_EMAIL; \n" >> ./paracord_runner.sh && \
+    printf "python3 changesuperuserpw.py -n SUPER_USERNAME -p SUPER_PASSWORD; \n " >> ./paracord_runner.sh && \
     printf "gunicorn ${PROJ_NAME}.wsgi:application --bind \"0.0.0.0:\$RUN_PORT\"\n" >> ./paracord_runner.sh
 
 # make the bash script executable
