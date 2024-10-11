@@ -21,4 +21,4 @@ def subscription_price_view(request, interval="month"):
                "year_url" : year_url,
                 "interval" : interval }
 
-    return render(request, 'subscription/princing.html', context)
+    return render(request, 'subscription/pricing.html', context)
