@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CreateSuperuserConfig(AppConfig):
+class createDefaultSuperuserConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'create_superuser'
+    name = 'create_default_superuser'
