@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'profiles',
     'subscriptions',
     'customers',
+    'create_default_superuser',
     # allauth_ui apps
     'allauth_ui',
     # allauth apps
