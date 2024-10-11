@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic.base import RedirectView
+from . import views
+from subscriptions.views import subscription_price_view
 
 from . import views
 
@@ -26,6 +28,8 @@ urlpatterns = [
     path('home/', views.homepage),
     path('accounts/', include('allauth.urls')),
     path('profiles/', include('profiles.urls')),
+    path('pricing', subscription_price_view, name='pricing'),
+    path('pricing/<str:interval>/', subscription_price_view, name='pricing_toggle'),
     path('protected/user_page/', views.user_only_view),
     path('staff_page/', views.staff_only_view),
     path('none', RedirectView.as_view(url='/admin'), name='staff'),

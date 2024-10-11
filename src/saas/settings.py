@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'static_files.apps.StaticFilesConfig',
     'profiles',
     'subscriptions',
+    'customers',
     # allauth_ui apps
     'allauth_ui',
     # allauth apps
